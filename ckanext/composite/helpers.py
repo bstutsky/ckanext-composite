@@ -3,9 +3,42 @@ import re
 import datetime
 
 import logging
+import copy
 
 
 logger = logging.getLogger(__name__)
+
+def composite_prepare_data_for_subfield(data, field, subfield):
+    try:
+        # don't modify actual data
+        data = copy.deepcopy(data)
+
+        fieldname = field['field_name']
+        field_data_str = data.get(fieldname)
+
+        if field_data_str:
+            field_data_dict = json.loads(field_data_str)
+            subfieldname = subfield['field_name']
+            subfield_data = field_data_dict.get(subfieldname)
+
+            if subfield_data:
+                data[fieldname + '-' + subfieldname] = subfield_data
+    except Exception as e:
+        logger.error(e)
+
+    return data
+
+def composite_prepare_subfield_for_scheming(field, subfield):
+    try:
+        # don't modify actual subfield
+        subfield = copy.deepcopy(subfield)
+
+        # get the field_name right
+        subfield['field_name'] = field['field_name'] + '-' + subfield['field_name']
+    except Exception as e:
+        logger.error(e)
+
+    return subfield
 
 def _json2dict_or_empty(value, field_name = ""):
     try:

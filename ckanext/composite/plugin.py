@@ -22,14 +22,18 @@ class CompositePlugin(plugins.SingletonPlugin):
 
     # ITemplateHelpers
     def get_helpers(self):
-        return { 'composite_get_as_dict': helpers.composite_get_as_dict,
-                 'composite_get_value_dict': helpers.composite_get_value_dict,
-                 'composite_get_label_dict': helpers.composite_get_label_dict,
-                 'composite_get_choices_dict': helpers.composite_get_choices_dict,
-                 'composite_get_name_list': helpers.composite_get_name_list,
-                 'composite_repeating_get_value_dict_list': helpers.composite_repeating_get_value_dict_list,
-                 'composite_is_mail': helpers.composite_is_mail,
-                 'composite_is_list': helpers.composite_is_list,
-                 'composite_join_list': helpers.composite_join_list,
-                 'composite_get_markup': helpers.composite_get_markup,
-                 'composite_get_default_value': helpers.composite_get_default_value}
+        return {
+            'composite_get_as_dict': helpers.composite_get_as_dict,
+            'composite_get_value_dict': helpers.composite_get_value_dict,
+            'composite_get_label_dict': helpers.composite_get_label_dict,
+            'composite_get_choices_dict': helpers.composite_get_choices_dict,
+            'composite_get_name_list': helpers.composite_get_name_list,
+            'composite_repeating_get_value_dict_list': helpers.composite_repeating_get_value_dict_list,
+            'composite_is_mail': helpers.composite_is_mail,
+            'composite_is_list': helpers.composite_is_list,
+            'composite_join_list': helpers.composite_join_list,
+            'composite_get_markup': helpers.composite_get_markup,
+            'composite_get_default_value': helpers.composite_get_default_value,
+            'composite_prepare_subfield_for_scheming': helpers.composite_prepare_subfield_for_scheming,
+            'composite_prepare_data_for_subfield': helpers.composite_prepare_data_for_subfield
+        }
