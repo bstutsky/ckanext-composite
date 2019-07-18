@@ -64,7 +64,7 @@
      {% endif %}
     {% else %}
       {% if subfield_form_snippet != None %}
-        {%- snippet 'scheming/form_snippets/' + subfield_form_snippet, field=subfield, subfield_index=0, name=name, value=value, errors=errors, data=data -%}
+        {%- snippet 'scheming/form_snippets/' + subfield_form_snippet, field=h.composite_prepare_subfield_for_scheming(field, subfield), subfield_index=0, name=name, value=value, errors=errors, data=h.composite_prepare_data_for_subfield(data, field, subfield) -%}
       {% endif %}
    {% endif %}
 {% endfor %}
